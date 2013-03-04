@@ -5,7 +5,7 @@ A LESS - CSS converter app for Linux
 
 Dependency
 ----------
-inotify-tools  
+**inotify-tools**  
 For Fedora users  
 ```sh
 $ sudo yum install inotify-tools   
