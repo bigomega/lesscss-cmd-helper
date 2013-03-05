@@ -44,7 +44,9 @@ cssroot=$2
 # Ajustments on $lessroot var
 if [[ -z $lessroot ]]; then
   lessroot=$(pwd)
-  echo "No LESS directory specified, using ${lessroot} as LESS files root directory."
+  # echo "No LESS directory specified, using ${lessroot} as LESS files root directory."
+  echo "Aborting:No LESS directory specified..."
+  exit 3
 elif [[ ! -d $lessroot ]]; then
   echo "Aborting: ${lessroot} is not a directory."
   exit 1
@@ -56,11 +58,11 @@ fi
 if [[ -z $cssroot ]]; then
   # Assuming $lessroot was not given
   if [[ -z $1 ]]; then
-    cssroot=$(readlink -f "$lessroot/../css")
+    cssroot=$(readlink -f "$lessroot")
 
   # else...
   else
-    cssroot=$(readlink -f ./css)
+    cssroot=$(readlink -f "$lessroot")
   fi
 
   echo "No CSS directory specified, using ${cssroot} as CSS files root directory."
